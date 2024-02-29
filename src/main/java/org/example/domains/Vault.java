@@ -13,8 +13,8 @@ public class Vault {
     public void remove(Coin coin) {
         coins.remove(coin);
     }
-    public void list() {
-        System.out.println(coins);
+    public ArrayList<Coin> list() {
+        return coins;
     }
 
     public void totalConvert() {
