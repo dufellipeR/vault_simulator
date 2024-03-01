@@ -3,6 +3,7 @@ package org.example;
 import org.example.domains.Vault;
 import org.example.domains.coins.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -36,7 +37,7 @@ public class Main {
             switch (option) {
                 case 0 -> terminate();
                 case 1 -> addScenario(scanner, vault);
-                case 2 -> rmScenario();
+                case 2 -> rmScenario(scanner, vault);
                 case 3 -> listAllScenario(vault);
                 case 4 -> convertAllToBRLScenario();
                 default -> System.out.printf("%d is not a valid option [0-4], try again  %n", option);
@@ -88,21 +89,48 @@ public class Main {
                 System.out.printf("%s successfully added into the vault\n", newCoin.getDisplay());
                 option = 0;
             }
-
         }
-
-
-
-
     }
 
-    private static void rmScenario(){}
+    private static void rmScenario(Scanner scanner, Vault vault){
+        int option = 5;
+
+        ArrayList<Coin> coins = vault.list();
+
+        while (option != 0) {
+            System.out.println();
+            System.out.println("Choose coin:");
+            System.out.println("-------------------------");
+
+            for (int i = 0; i < coins.size(); i++) {
+                System.out.printf("%d - %s\n", i+1, coins.get(i).info());
+            }
+
+            System.out.println("0 -> go back\n");
+            System.out.print("Choose an option: ");
+
+            option = scanner.nextInt(); // catch error
+            scanner.nextLine();
+
+            if (option == 0) { return; }
+
+            if (option >= 1 && option <= coins.size()) {
+                String removedCoin = coins.get(option-1).getDisplay();
+
+                vault.remove(option-1);
+                System.out.printf("%s successfully removed from the vault\n", removedCoin);
+                option = 0;
+            } else {
+                System.out.printf("%d is not a valid option, try again  %n", option);
+            }
+        }
+    }
 
     private static void listAllScenario(Vault vault){
         System.out.println("\nCoins:");
         System.out.println("-------------------------");
         for (Coin coin : vault.list()){
-            System.out.printf("%s - %.2f \n", coin.getDisplay(), coin.getValue());
+            System.out.println(coin.info());
         }
     }
 

@@ -10,8 +10,8 @@ public class Vault {
 
     public void add(Coin coin) { coins.add(coin); }
 
-    public void remove(Coin coin) {
-        coins.remove(coin);
+    public void remove(int coinIndex) {
+        coins.remove(coinIndex);
     }
     public ArrayList<Coin> list() {
         return coins;
