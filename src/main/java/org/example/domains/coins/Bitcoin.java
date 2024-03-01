@@ -5,4 +5,10 @@ public class Bitcoin extends Coin{
     public String getDisplay() {
         return "Bitcoin";
     }
+
+    @Override
+    public double convert() {
+        final double CONVERT_VALUE = 308589D;
+        return super.value * CONVERT_VALUE;
+    }
 }

@@ -17,7 +17,13 @@ public class Vault {
         return coins;
     }
 
-    public void totalConvert() {
+    public double totalConvert() {
+        double total = 0;
 
+        for (Coin coin : coins) {
+            total += coin.convert();
+        }
+
+        return total;
     }
 }

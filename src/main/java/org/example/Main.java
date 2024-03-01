@@ -39,7 +39,7 @@ public class Main {
                 case 1 -> addScenario(scanner, vault);
                 case 2 -> rmScenario(scanner, vault);
                 case 3 -> listAllScenario(vault);
-                case 4 -> convertAllToBRLScenario();
+                case 4 -> convertAllToBRLScenario(vault);
                 default -> System.out.printf("%d is not a valid option [0-4], try again  %n", option);
             }
 
@@ -134,5 +134,10 @@ public class Main {
         }
     }
 
-    private static void convertAllToBRLScenario(){}
+    private static void convertAllToBRLScenario(Vault vault){
+        System.out.println("\nConverted to BRL:");
+        System.out.println("-------------------------");
+        System.out.printf("R$ %.2f\n", vault.totalConvert());
+
+    }
 }
