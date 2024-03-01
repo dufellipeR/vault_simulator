@@ -8,9 +8,7 @@ public abstract class Coin {
 
     }
 
-    public String getDisplay() {
-        return "General Coin";
-    }
+    public abstract String getDisplay();
 
     public void setValue(double value) {
         this.value = value;
