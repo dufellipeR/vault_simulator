@@ -14,9 +14,5 @@ public abstract class Coin {
     }
 
     public abstract double convert();
-
-    public double getValue() {
-        return value;
-    }
 }
 
